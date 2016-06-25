@@ -66,7 +66,7 @@ app.post('/usuario/createUser', function (req, res) {
 	}
 });
 // Listar
-app.post('/usuario/list', function (req, res) {
+app.get('/usuario/list', function (req, res) {
 	try{
 		usuarioController.Lista(function(resData){
 			var responseJson = resData;
@@ -82,7 +82,7 @@ app.post('/usuario/list', function (req, res) {
 // ********************
 // *** Modulo: Finanzas
 // Listar
-app.post('/finanza/lista', function (req, res) {
+app.get('/finanza/lista', function (req, res) {
 	try{
 	  finanzaController.Lista(function(resData){
 	  	res.json(resData);	
@@ -113,7 +113,7 @@ app.post('/finanza/crear', function (req, res) {
 	}
 });
 // Editar
-app.post('/finanza/editar', function (req, res) {
+app.put('/finanza/editar', function (req, res) {
 	try{
   		var objEdit = {
   			id : req.body.id,
@@ -133,7 +133,7 @@ app.post('/finanza/editar', function (req, res) {
 	}
 });
 // Eliminar
-app.post('/finanza/eliminar', function (req, res) {
+app.delete('/finanza/eliminar', function (req, res) {
 	try{
 		var objRemove = {
   			id : req.body.id
@@ -150,7 +150,7 @@ app.post('/finanza/eliminar', function (req, res) {
 	}
 });
 // Buscar por Id
-app.post('/finanza/findById', function (req, res) {
+app.get('/finanza/findById', function (req, res) {
 	try{
   		var objFind = {
   			_id : req.body.id,
@@ -170,7 +170,7 @@ app.post('/finanza/findById', function (req, res) {
 // ********************
 // *** Modulo: Recursos Humanos
 // Listar
-app.post('/recursohumano/lista', function (req, res) {
+app.get('/recursohumano/lista', function (req, res) {
 	try{
 	  recursoHumanoController.Lista(function(resData){
 	  	res.json(resData);	
@@ -208,7 +208,7 @@ app.post('/recursohumano/crear', function (req, res) {
 	}
 });
 // Editar
-app.post('/recursohumano/editar', function (req, res) {
+app.put('/recursohumano/editar', function (req, res) {
 	try{
   		var objEdit = {
   			id : req.body.id,
@@ -235,7 +235,7 @@ app.post('/recursohumano/editar', function (req, res) {
 	}
 });
 // Eliminar
-app.post('/recursohumano/eliminar', function (req, res) {
+app.delete('/recursohumano/eliminar', function (req, res) {
 	try{
 		var objRemove = {
   			id : req.body.id
@@ -252,7 +252,7 @@ app.post('/recursohumano/eliminar', function (req, res) {
 	}
 });
 // Buscar por Id
-app.post('/recursohumano/findById', function (req, res) {
+app.get('/recursohumano/findById', function (req, res) {
 	try{
   		var objFind = {
   			_id : req.body.id,
