@@ -10,13 +10,21 @@ def ingresarPersona():
     FinanzaLibrary.consumePost(data)
 
 def editarPersona():
-    id = int(input("Identificador:"))
-    nombrePersona = int(input("Nombre de la persona:"))
-    fchMovimiento = int(input("Digite:"))
-    saldoMovimiento = int(input("Saldo:"))
+    id = raw_input("Identificador:")
+    nomPer = raw_input("Nombre de la persona:")
+    fchMov = raw_input("Fecha movimiento:")
+    saldoMov = raw_input("Saldo:")
+    data = { 'id' : id,
+			'nombrePersona': nomPer,
+  			'fchMovimiento': fchMov,
+  			'saldoMovimiento': saldoMov
+    }
+    FinanzaLibrary.consumePut(data)
 
 def eliminarPersona():
-    id = int(input("Identificador:"))
+    id = raw_input("Identificador:")
+    data = { 'id' : id }
+    FinanzaLibrary.consumeDelete(data)
 
 def listarPersonas():
     FinanzaLibrary.consumeGet()

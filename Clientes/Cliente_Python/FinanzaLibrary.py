@@ -7,23 +7,15 @@ def consumeGet():
     body = res.text 
     print(body)
 
-def consumePut(identificador,nomPer,fchMov,saldoMov):
+def consumePut(data):
     url_json = 'http://localhost:8080/finanza/editar'
-    data = { id : identificador,
-			nombrePersona: nomPer,
-  			fchMovimiento: fchMov,
-  			saldoMovimiento: saldoMov
-    }
-    res = requests.post(dest,data)
-    body = res.text 
-    print(body)
+    res = requests.put(url_json,data)
+    print(res.status_code)
 
-def consumeDelete(identificador):
+def consumeDelete(datos):
     url_json = 'http://localhost:8080/finanza/eliminar'
-    data = { id : identificador }
-    res = requests.delete(dest, data)
-    body = res.text
-    print(body)
+    res = requests.delete(url_json, data=datos)
+    print(res.status_code)    
 
 def consumePost(data):
     url_json = 'http://localhost:8080/finanza/crear'

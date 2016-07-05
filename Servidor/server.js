@@ -138,7 +138,7 @@ app.delete('/finanza/eliminar', function (req, res) {
 		var objRemove = {
   			id : req.body.id
   		};
-
+  		console.log(objRemove);
 		finanzaController.Eliminar(objRemove, function(resData){
 			var responseJson = resData;
 		  	console.log(responseJson);
