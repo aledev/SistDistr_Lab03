@@ -18,19 +18,29 @@ def listarPersonas():
     FinanzaLibrary.consumeGet()
 
 def main():
-    while True:
+    optExit = True
+    while optExit:
         try:
             print("Elija una opcion \n")
             print("1.Listar personas de Finanzas \n")
-            print("2.XXX \n")
-            print("3.XXX \n")
-            print("4.XXX \n")
+            print("2.Ingresar Persona \n")
+            print("3.Editar Persona \n")
+            print("4.Eliminar persona \n")
+            print("5.Salir \n")
 
             opt = int(input("Opcion:"))            
             print(opt)
 
             if opt == 1:
                 listarPersonas()
+            if opt == 2:
+                ingresarPersona()
+            if opt == 3:
+                editarPersona()
+            if opt == 4:
+                eliminarPersona()
+            if opt == 5:
+                optExit = False
             else:
                 print("Ups.. \n")            
         except:
