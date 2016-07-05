@@ -70,10 +70,57 @@ public class JRequestLib {
         
         return jsonResult;
     }
+    
+    public String getRequest(String p_Url, String p_Content) throws Exception {
+        String MPREFIX = "getRequest(String)";
+        String jsonResult = "";
+        
+        try {
+            URL url = new URL(p_Url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+            
+            String input = p_Content;
+
+            OutputStream os = conn.getOutputStream();
+            os.write(input.getBytes());
+            os.flush();
+            
+            if (conn.getResponseCode() != 200) {
+                throw new Exception("Failed : HTTP error code : " + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                (conn.getInputStream())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+                jsonResult += output;
+            }
+            
+            conn.disconnect();
+        } 
+        //catch (MalformedURLException e) {
+        //    e.printStackTrace();
+        //} 
+        //catch (IOException e) {
+        //    e.printStackTrace();
+        //}
+        catch(Exception e){
+            throw e;
+        }
+        
+        return jsonResult;
+    }
     //</editor-fold>
     
     //<editor-fold defaultstate="collapsed" desc="postRequest">
-    public String postRequest(String p_Url, String p_JsonData) throws Exception {
+    public String postRequest(String p_Url, String p_Content) throws Exception {
         String MPREFIX = "getRequest(String)";
         String jsonResult = "";
         
@@ -82,9 +129,9 @@ public class JRequestLib {
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setDoOutput(true);
             conn.setRequestMethod("POST");
-            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
 
-            String input = p_JsonData;
+            String input = p_Content;
 
             OutputStream os = conn.getOutputStream();
             os.write(input.getBytes());
@@ -121,7 +168,103 @@ public class JRequestLib {
     }
     //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="putRequest">
+    public String putRequest(String p_Url, String p_Content) throws Exception {
+        String MPREFIX = "getRequest(String)";
+        String jsonResult = "";
+        
+        try {
+            URL url = new URL(p_Url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("PUT");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+            String input = p_Content;
+
+            OutputStream os = conn.getOutputStream();
+            os.write(input.getBytes());
+            os.flush();
+
+            if (conn.getResponseCode() != 200) {
+                throw new Exception("Failed : HTTP error code : " + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                (conn.getInputStream())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+                jsonResult += output;
+            }
+
+            conn.disconnect();
+        } 
+        //catch (MalformedURLException e) {
+        //    e.printStackTrace();
+        //} 
+        //catch (IOException e) {
+        //    e.printStackTrace();
+        //}
+        catch(Exception e){
+            throw e;
+        }
+        
+        return jsonResult;
+    }
+    //</editor-fold>
     
+    //<editor-fold defaultstate="collapsed" desc="putRequest">
+    public String deleteRequest(String p_Url, String p_Content) throws Exception {
+        String MPREFIX = "deleteRequest(String)";
+        String jsonResult = "";
+        
+        try {
+            URL url = new URL(p_Url);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestMethod("DELETE");
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+
+            String input = p_Content;
+
+            OutputStream os = conn.getOutputStream();
+            os.write(input.getBytes());
+            os.flush();
+
+            if (conn.getResponseCode() != 200) {
+                throw new Exception("Failed : HTTP error code : " + conn.getResponseCode());
+            }
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(
+                (conn.getInputStream())));
+
+            String output;
+            System.out.println("Output from Server .... \n");
+
+            while ((output = br.readLine()) != null) {
+                System.out.println(output);
+                jsonResult += output;
+            }
+
+            conn.disconnect();
+        } 
+        //catch (MalformedURLException e) {
+        //    e.printStackTrace();
+        //} 
+        //catch (IOException e) {
+        //    e.printStackTrace();
+        //}
+        catch(Exception e){
+            throw e;
+        }
+        
+        return jsonResult;
+    }
+    //</editor-fold>
     
     //</editor-fold>
 }
