@@ -1,9 +1,13 @@
 import FinanzaLibrary
 
 def ingresarPersona():
-    nombrePersona = int(input("Nombre de la persona:"))
-    fchMovimiento = int(input("Digite:"))
-    saldoMovimiento = int(input("Saldo:"))
+    np = raw_input("Nombre de la persona:")
+    fch = raw_input("Fecha movimiento:")
+    saldo = raw_input("Saldo:")
+    data = { 'nombrePersona': np,
+  			'fchMovimiento': fch,
+  			'saldoMovimiento': saldo }
+    FinanzaLibrary.consumePost(data)
 
 def editarPersona():
     id = int(input("Identificador:"))
@@ -40,9 +44,7 @@ def main():
             if opt == 4:
                 eliminarPersona()
             if opt == 5:
-                optExit = False
-            else:
-                print("Ups.. \n")            
+                optExit = False          
         except:
             print ("\n Ha ocurrido un error, favor intentar nuevamente. Si el problema persiste, llame al administrador")
 

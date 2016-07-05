@@ -3,11 +3,11 @@ import json
 
 def consumeGet():
     url_json = 'http://localhost:8080/finanza/lista'
-    res = requests.post(url_json)
+    res = requests.get(url_json)
     body = res.text 
     print(body)
 
-def consumePost(identificador,nomPer,fchMov,saldoMov):
+def consumePut(identificador,nomPer,fchMov,saldoMov):
     url_json = 'http://localhost:8080/finanza/editar'
     data = { id : identificador,
 			nombrePersona: nomPer,
@@ -25,11 +25,7 @@ def consumeDelete(identificador):
     body = res.text
     print(body)
 
-def consumePut():
+def consumePost(data):
     url_json = 'http://localhost:8080/finanza/crear'
-    data = { nombrePersona: req.body.nombrePersona,
-  			fchMovimiento: req.body.fchMovimiento,
-  			saldoMovimiento: req.body.saldoMovimiento }
-    res = requests.put(dest, data)
-    body = res.text 
-    print(body)
+    res = requests.post(url_json, data)
+    print(res.status_code)
