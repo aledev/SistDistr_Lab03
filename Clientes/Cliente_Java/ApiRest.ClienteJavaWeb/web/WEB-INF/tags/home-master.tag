@@ -359,7 +359,7 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Sistema Lab01 RMI Web</a>
+                <a class="navbar-brand" href="#">Sistema Lab03 API REST</a>
               </div>
               <div id="navbar" class="navbar-collapse collapse">
                   <p class="navbar-text navbar-right">

@@ -16,18 +16,23 @@
         List<FinanzaDTO> objList = (List<FinanzaDTO>)request.getAttribute("finanzaAllObj");
         if(objList.size() > 0){
             for(int x = 0; x < objList.size(); x++){
-                _htmlBody += "<tr>";
-                _htmlBody += "<td>" +
-                             "<a href=\"FinanzaController?action=editar&_id=" + objList.get(x).get_Id() + "\">" +
-                                "<span class=\"glyphicon glyphicon-pencil\" title=\"Editar\">&nbsp;</span></a>&nbsp;" +
-                             "<a href=\"javascript:void(0)\" onclick=\"EliminarFinanza('" + objList.get(x).get_Id() + "')\">" + 
-                                "<span class=\"glyphicon glyphicon-remove\" title=\"Eliminar\">&nbsp;</span></a>" +
-                             "</td>";
-                _htmlBody += "<td>" + objList.get(x).get_Id() + "</td>";
-                _htmlBody += "<td>" + objList.get(x).getNombrePersona() + "</td>";
-                _htmlBody += "<td>" + objList.get(x).getSaldoMovimiento().toString() + "</td>";
-                _htmlBody += "<td>" + objList.get(x).getFchMovimiento().toString() + "</td>";
-                _htmlBody += "</tr>";
+                try{
+                    _htmlBody += "<tr>";
+                    _htmlBody += "<td>" +
+                                 "<a href=\"FinanzaController?action=editar&_id=" + objList.get(x).get_Id() + "\">" +
+                                    "<span class=\"glyphicon glyphicon-pencil\" title=\"Editar\">&nbsp;</span></a>&nbsp;" +
+                                 "<a href=\"javascript:void(0)\" onclick=\"EliminarFinanza('" + objList.get(x).get_Id() + "')\">" + 
+                                    "<span class=\"glyphicon glyphicon-remove\" title=\"Eliminar\">&nbsp;</span></a>" +
+                                 "</td>";
+                    _htmlBody += "<td>" + objList.get(x).get_Id() + "</td>";
+                    _htmlBody += "<td>" + objList.get(x).getNombrePersona() + "</td>";
+                    _htmlBody += "<td>" + objList.get(x).getSaldoMovimiento().toString() + "</td>";
+                    _htmlBody += "<td>" + objList.get(x).getFchMovimiento().toString() + "</td>";
+                    _htmlBody += "</tr>";
+                }
+                catch(Exception ex){
+                
+                }
             }
         }
         else{

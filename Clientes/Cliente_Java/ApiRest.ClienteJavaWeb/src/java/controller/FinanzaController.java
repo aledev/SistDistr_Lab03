@@ -153,7 +153,8 @@ public class FinanzaController extends HttpServlet {
                 if(salida3){
                     rd = request.getRequestDispatcher("/paginas/finanzas/list.jsp");
                     request.setAttribute("salida", salida3);
-                    request.setAttribute("finanzaAll", buscarTodo());
+                    //request.setAttribute("finanzaAll", buscarTodo());
+                    request.setAttribute("finanzaAllObj", buscarTodo());
                 }
                 else{
                     rd = request.getRequestDispatcher("/paginas/home.jsp");
